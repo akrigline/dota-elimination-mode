@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { actions as myActions, actionCreators as myActionCreators } from './<%= camelEntityName %>Reducer'
+import { actions as myActions, actionCreators as myActionCreators } from './<%= camelEntityName %>Actions'
 
 export const actions = myActions
 export const actionCreators = myActionCreators

@@ -1,6 +1,7 @@
 import React from 'react'
 import DisplayStars from '../../containers/displayStars/displayStarsContainer'
-import DisplayTime from '../../containers/subscribeToTimer/subscribeToTimerContainer'
+// import DisplayTime from '../../containers/subscribeToTimer/subscribeToTimerContainer'
+import HeroGrid from '../../components/heroGrid/heroGridComponent'
 // import { subscribeToTimer } from '../../services/api'
 
 class HomePageRoute extends React.Component {
@@ -26,8 +27,8 @@ class HomePageRoute extends React.Component {
     return (
       <div>
         <h1>This is the Homepage</h1>
-        <DisplayTime />
         <DisplayStars />
+        <HeroGrid />
       </div>
     )
   }

@@ -1,18 +1,18 @@
 import {connect} from 'react-redux'
 // For Lifecycle composing
 // import {compose, lifecycle} from 'recompose'
-import <%= pascalEntityName %> from '../../components/<%= camelEntityName %>/<%= camelEntityName %>Component'
-import {actionCreators} from '../../redux/reducers/basicReducer/basicReducerReducer'
+import HeroPicker from '../../components/heroPicker/heroPickerComponent'
+import {actionCreators} from '../../redux/reducers/picker/pickerReducer'
 
 // Global State
 export function mapStateToProps (state, props) {
   return {
-    starCount: state.counter.count
+    isDisabled: state.picker.disabledHeroes.includes(props.name)
   }
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
-  onClick: actionCreators.increment
+  pick: actionCreators.serverPick
 }
 
 // If you want to use the function mapping
@@ -22,7 +22,7 @@ export const propsMapping = {
 //   }
 // }
 
-export default connect(mapStateToProps, propsMapping)(<%= pascalEntityName %>)
+export default connect(mapStateToProps, propsMapping)(HeroPicker)
 
 // export default compose(
 //   connect(mapStateToProps, propsMapping),
@@ -33,4 +33,4 @@ export default connect(mapStateToProps, propsMapping)(<%= pascalEntityName %>)
 //       }
 //     }
 //   })
-// )(<%= pascalEntityName %>)
+// )(HeroPicker)

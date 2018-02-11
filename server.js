@@ -25,10 +25,18 @@ io.on('connection', client => {
       console.log('got decrement')
       connections.forEach(client => client.emit('action', {type: 'BasicReducer/DECREMENT', payload: action.payload}))
     }
+    if (action.type === 'server/PICK') {
+      console.log('got pick')
+      connections.forEach(client => client.emit('action', {
+        type: 'Picker/PICK',
+        payload: action.payload
+      }))
+    }
   })
 
   client.on('disconnect', () => {
     const index = connections.indexOf(client)
+    console.log('disconnected')
     connections.splice(index, 1)
   })
   // start emitting events
