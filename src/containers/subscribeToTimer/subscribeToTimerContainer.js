@@ -1,18 +1,17 @@
 import { connect } from 'react-redux'
-import { compose } from 'recompose'
-import DisplayStars from '../../components/displayStars/displayStarsComponent'
+import { compose, lifecycle } from 'recompose'
+import SubscribedTimer from '../../components/subscribedTimer/subscribedTimerComponent'
 import { actionCreators } from '../../redux/reducers/basicReducer/basicReducerReducer'
 
 // Global State
 export function mapStateToProps (state, props) {
   return {
-    count: state.basicReducer.count
+    time: state.basicReducer.time
   }
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
-  increment: actionCreators.serverIncrement,
-  decrement: actionCreators.serverDecrement
+  subscribe: actionCreators.subscribeToTimer
 }
 
 // If you want to use the function mapping
@@ -23,10 +22,10 @@ export const propsMapping = {
 // }
 
 export default compose(
-  connect(mapStateToProps, propsMapping)
-  // lifecycle({
-  //   componentDidMount: function () {
-  //     this.props.fetchBasic && this.props.fetchBasic()
-  //   }
-  // })
-)(DisplayStars)
+  connect(mapStateToProps, propsMapping),
+  lifecycle({
+    componentDidMount: function () {
+      this.props.subscribe && this.props.subscribe(1000)
+    }
+  })
+)(SubscribedTimer)

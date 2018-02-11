@@ -1,31 +1,30 @@
-import { createAction, handleActions } from 'redux-actions'
-// Name Spaced Action Types
-const INCREMENT = 'BasicReducer/INCREMENT'
-const DECREMENT = 'BasicReducer/DECREMENT'
-export const actions = {
-  INCREMENT,
-  DECREMENT
-}
+import { handleActions } from 'redux-actions'
+import {
+  actions as myActions,
+  actionCreators as myActionCreators
+} from './basicReducerActions'
 
-export const actionCreators = {
-  increment: createAction(INCREMENT),
-  decrement: createAction(DECREMENT)
-}
+export const actionCreators = myActionCreators
+export const actions = myActions
 
 export const initialState = {
   count: 0,
-  string: 'string'
+  time: 'no time yet'
 }
 
 export default handleActions(
   {
-    [INCREMENT]: (state, action) => ({
+    [actions.INCREMENT]: (state, action) => ({
       ...state,
       count: state.count + action.payload
     }),
-    [DECREMENT]: (state, action) => ({
+    [actions.DECREMENT]: (state, action) => ({
       ...state,
       count: state.count - action.payload
+    }),
+    [actions.SET_TIMER]: (state, action) => ({
+      ...state,
+      time: action.payload
     })
   },
   initialState

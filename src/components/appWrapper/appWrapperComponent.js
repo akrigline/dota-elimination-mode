@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import styles from './appWrapperComponent.scss'
 
 class AppWrapper extends Component {
   render () {
     return (
-      <div className={styles.app}>
-        <div className={styles.appHeader}>
+      <div>
+        <div>
           <h2>Welcome to React</h2>
         </div>
         {this.props.children}
