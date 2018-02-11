@@ -1,7 +1,12 @@
 import openSocket from 'socket.io-client'
-const socket = openSocket('http://localhost:8000')
+const socket = openSocket('/update')
 
-export const subscribeToTimer = (interval, cb) => {
-  socket.on('timer', timestamp => cb(null, timestamp))
-  socket.emit('subscribeToTimer', interval)
+/**
+ * Subscribes the Client to the /update socket
+ * connection to tell the server that it needs
+ * to update us on current state.
+ * @param {any} cb - Callback after 'updateMe' has been received from the server
+ */
+export const subscribeToUpdate = (cb) => {
+  socket.on('updateMe', () => cb(null))
 }

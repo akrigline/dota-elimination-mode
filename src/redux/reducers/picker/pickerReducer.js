@@ -25,5 +25,12 @@ export default handleActions({
       [action.payload.team]: newPickList,
       disabledHeroes: newDisabledHeroes
     }
+  },
+  [actions.UPDATE]: (state, action) => {
+    console.log('updating')
+    return {
+      ...state,
+      ...action.payload
+    }
   }
 }, initialState)

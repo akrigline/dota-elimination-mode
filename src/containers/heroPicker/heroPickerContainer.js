@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 // For Lifecycle composing
 // import {compose, lifecycle} from 'recompose'
 import HeroPicker from '../../components/heroPicker/heroPickerComponent'
-import {actionCreators} from '../../redux/reducers/picker/pickerReducer'
+import {actionCreators} from '../../redux/reducers/server/serverActions'
 
 // Global State
 export function mapStateToProps (state, props) {
@@ -12,7 +12,7 @@ export function mapStateToProps (state, props) {
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
-  pick: actionCreators.serverPick
+  pick: actionCreators.pick
 }
 
 // If you want to use the function mapping
