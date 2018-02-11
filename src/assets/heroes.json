@@ -1,0 +1,353 @@
+{
+  "strength": [
+    {
+      "name": "Abaddon"
+    },
+    {
+      "name": "Alchemist"
+    },
+    {
+      "name": "Axe"
+    },
+    {
+      "name": "Beastmaster"
+    },
+    {
+      "name": "Brewmaster"
+    },
+    {
+      "name": "Bristleback"
+    },
+    {
+      "name": "Centaur Warrunner"
+    },
+    {
+      "name": "Chaos Knight"
+    },
+    {
+      "name": "Clockwerk"
+    },
+    {
+      "name": "Doom"
+    },
+    {
+      "name": "Dragon Knight"
+    },
+    {
+      "name": "Earth Spirit"
+    },
+    {
+      "name": "Earthshaker"
+    },
+    {
+      "name": "Elder Titan"
+    },
+    {
+      "name": "Huskar"
+    },
+    {
+      "name": "Io"
+    },
+    {
+      "name": "Kunkka"
+    },
+    {
+      "name": "Legion Commander"
+    },
+    {
+      "name": "Lifestealer"
+    },
+    {
+      "name": "Lycan"
+    },
+    {
+      "name": "Magnus"
+    },
+    {
+      "name": "Night Stalker"
+    },
+    {
+      "name": "Omniknight"
+    },
+    {
+      "name": "Phoenix"
+    },
+    {
+      "name": "Pudge"
+    },
+    {
+      "name": "Sand King"
+    },
+    {
+      "name": "Slardar"
+    },
+    {
+      "name": "Spirit Breaker"
+    },
+    {
+      "name": "Sven"
+    },
+    {
+      "name": "Tidehunter"
+    },
+    {
+      "name": "Timbersaw"
+    },
+    {
+      "name": "Tiny"
+    },
+    {
+      "name": "Treant Protector"
+    },
+    {
+      "name": "Tusk"
+    },
+    {
+      "name": "Underlord"
+    },
+    {
+      "name": "Undying"
+    },
+    {
+      "name": "Wraith King"
+    }
+  ],
+  "agility": [
+    {
+      "name": "Anti-Mage"
+    },
+    {
+      "name": "Arc Warden"
+    },
+    {
+      "name": "Bloodseeker"
+    },
+    {
+      "name": "Bounty Hunter"
+    },
+    {
+      "name": "Broodmother"
+    },
+    {
+      "name": "Clinkz"
+    },
+    {
+      "name": "Drow Ranger"
+    },
+    {
+      "name": "Ember Spirit"
+    },
+    {
+      "name": "Faceless Void"
+    },
+    {
+      "name": "Gyrocopter"
+    },
+    {
+      "name": "Juggernaut"
+    },
+    {
+      "name": "Lone Druid"
+    },
+    {
+      "name": "Luna"
+    },
+    {
+      "name": "Medusa"
+    },
+    {
+      "name": "Meepo"
+    },
+    {
+      "name": "Mirana"
+    },
+    {
+      "name": "Monkey King"
+    },
+    {
+      "name": "Morphling"
+    },
+    {
+      "name": "Naga Siren"
+    },
+    {
+      "name": "Nyx Assassin"
+    },
+    {
+      "name": "Pangolier"
+    },
+    {
+      "name": "Phantom Assassin"
+    },
+    {
+      "name": "Phantom Lancer"
+    },
+    {
+      "name": "Razor"
+    },
+    {
+      "name": "Riki"
+    },
+    {
+      "name": "Shadow Fiend"
+    },
+    {
+      "name": "Slark"
+    },
+    {
+      "name": "Sniper"
+    },
+    {
+      "name": "Spectre"
+    },
+    {
+      "name": "Templar Assassin"
+    },
+    {
+      "name": "Terrorblade"
+    },
+    {
+      "name": "Troll Warlord"
+    },
+    {
+      "name": "Ursa"
+    },
+    {
+      "name": "Vengeful Spirit"
+    },
+    {
+      "name": "Venomancer"
+    },
+    {
+      "name": "Viper"
+    },
+    {
+      "name": "Weaver"
+    }
+  ],
+  "inteligence": [
+    {
+      "name": "Ancient Apparition"
+    },
+    {
+      "name": "Bane"
+    },
+    {
+      "name": "Batrider"
+    },
+    {
+      "name": "Chen"
+    },
+    {
+      "name": "Crystal Maiden"
+    },
+    {
+      "name": "Dark Seer"
+    },
+    {
+      "name": "Dark Willow"
+    },
+    {
+      "name": "Dazzle"
+    },
+    {
+      "name": "Death Prophet"
+    },
+    {
+      "name": "Disruptor"
+    },
+    {
+      "name": "Enchantress"
+    },
+    {
+      "name": "Enigma"
+    },
+    {
+      "name": "Invoker"
+    },
+    {
+      "name": "Jakiro"
+    },
+    {
+      "name": "Keeper of the Light"
+    },
+    {
+      "name": "Leshrac"
+    },
+    {
+      "name": "Lich"
+    },
+    {
+      "name": "Lina"
+    },
+    {
+      "name": "Lion"
+    },
+    {
+      "name": "Nature's Prophet"
+    },
+    {
+      "name": "Necrophos"
+    },
+    {
+      "name": "Ogre Magi"
+    },
+    {
+      "name": "Oracle"
+    },
+    {
+      "name": "Outworld Devourer"
+    },
+    {
+      "name": "Puck"
+    },
+    {
+      "name": "Pugna"
+    },
+    {
+      "name": "Queen of Pain"
+    },
+    {
+      "name": "Rubick"
+    },
+    {
+      "name": "Shadow Demon"
+    },
+    {
+      "name": "Shadow Shaman"
+    },
+    {
+      "name": "Silencer"
+    },
+    {
+      "name": "Skywrath Mage"
+    },
+    {
+      "name": "Storm Spirit"
+    },
+    {
+      "name": "Techies"
+    },
+    {
+      "name": "Tinker"
+    },
+    {
+      "name": "Visage"
+    },
+    {
+      "name": "Warlock"
+    },
+    {
+      "name": "Windranger"
+    },
+    {
+      "name": "Winter Wyvern"
+    },
+    {
+      "name": "Witch Doctor"
+    },
+    {
+      "name": "Zeus"
+    }
+  ]
+}
