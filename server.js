@@ -5,13 +5,12 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const path = require('path')
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'build')))
 
-  app.get('/', function (req, res) {
-    res.sendfile(path.join(__dirname, 'build', 'index.html'))
-  })
-}
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get('/', function (req, res) {
+  res.sendfile(path.join(__dirname, 'build', 'index.html'))
+})
 
 io.of('/update').on('connect', (client) => {
   console.log('connected')
