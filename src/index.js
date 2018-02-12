@@ -5,6 +5,7 @@ import Root from './routes/root/rootRoute'
 import registerServiceWorker from './registerServiceWorker'
 import createReduxStore from './redux/store'
 import './normalize.css'
+import './stylesheet.css'
 
 const store = createReduxStore()
 

@@ -7,8 +7,8 @@ class HomePageRoute extends React.Component {
   render () {
     return (
       <div>
-        <ResetButton>Reset</ResetButton>
         <HeroGrid />
+        <ResetButton>Reset</ResetButton>
       </div>
     )
   }
