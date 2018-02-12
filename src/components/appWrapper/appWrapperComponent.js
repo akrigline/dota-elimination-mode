@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
+import { Title } from '../../styled'
+import styled from 'styled-components'
 
 class AppWrapper extends Component {
   render () {
+    const AppWrapper = styled.div`
+      background-image: url(${require('../../assets/images/background.png')});
+      background-size: cover;
+      min-height: 100vh;
+      width: 100vw;
+      overflow: auto;
+    `
     return (
-      <div>
-        <div>
-          <h2>Welcome to React</h2>
-        </div>
+      <AppWrapper>
+        <Title>Elimination Mode</Title>
         {this.props.children}
-      </div>
+      </AppWrapper>
     )
   }
 }

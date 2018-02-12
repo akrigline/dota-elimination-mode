@@ -1,12 +1,13 @@
 import React from 'react'
 // import DisplayTime from '../../containers/subscribeToTimer/subscribeToTimerContainer'
 import HeroGrid from '../../components/heroGrid/heroGridComponent'
+import ResetButton from '../../containers/resetButton/resetButtonContainer'
 
 class HomePageRoute extends React.Component {
   render () {
     return (
       <div>
-        <h1>This is the Homepage</h1>
+        <ResetButton>Reset</ResetButton>
         <HeroGrid />
       </div>
     )

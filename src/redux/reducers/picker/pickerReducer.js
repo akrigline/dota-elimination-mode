@@ -32,5 +32,8 @@ export default handleActions({
       ...state,
       ...action.payload
     }
+  },
+  [actions.RESET]: (state, action) => {
+    return {...initialState}
   }
 }, initialState)
