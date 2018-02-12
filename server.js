@@ -27,4 +27,4 @@ io.on('connection', client => {
   })
 })
 
-server.listen(4000)
+server.listen(process.env.PORT || 4000)
