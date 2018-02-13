@@ -28,6 +28,15 @@ const NumberColumn = styled.div`
   flex-direction: column;
   flex-basis: 20%;
   flex-grow: 1;
+  padding-top: calc(1.17em + 1em + 1em + 0.75em);
+  align-items: center;
+`
+
+const NumberEntry = styled.div`
+  font-size: 0.7rem;
+  color: white;
+  margin-bottom: ${props => props.pick ? '0.75em' : '0.45em'};
+  margin-top: ${props => props.pick ? '0.75em' : '0.45em'};
 `
 
 const Selection = styled.div`
@@ -80,7 +89,7 @@ export default function PickDisplay (props) {
       </PickColumn>
       <NumberColumn>
         {pickOrder.map((pick, index) => (
-          <div>{index + 1}</div>
+          <NumberEntry pick={pick.pickType === 'pick'}>{index + 1}</NumberEntry>
         ))}
       </NumberColumn>
       <PickColumn>
