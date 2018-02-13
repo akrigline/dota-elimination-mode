@@ -9,6 +9,7 @@ class AppWrapper extends Component {
       background-size: cover;
       min-height: 100vh;
       width: 100vw;
+      max-width:100%;
       overflow: auto;
     `
     return (

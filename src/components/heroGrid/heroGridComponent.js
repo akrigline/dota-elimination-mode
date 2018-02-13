@@ -5,6 +5,10 @@ import HeroPicker from '../../containers/heroPicker/heroPickerContainer'
 import styled from 'styled-components'
 import pickOrder from '../../assets/pickOrder'
 
+const HeroGridWrapper = styled.div`
+  flex-grow: 1;
+`
+
 const AttributeRow = styled.section`
   display: flex;
   flex-direction: row;
@@ -48,7 +52,7 @@ export default function HeroGrid (props) {
   const pickType = pickOrder[props.step].pickType
   const isDisabled = !props.team || !isCurrentTeamPicking
   return (
-    <div>
+    <HeroGridWrapper>
       {Object.keys(heroJson).map(attribute => (
         <AttributeRow>
           <AttributeTitle><h3>{attribute}</h3></AttributeTitle>
@@ -64,7 +68,7 @@ export default function HeroGrid (props) {
           </HeroGridDisplay>
         </AttributeRow>
       ))}
-    </div>
+    </HeroGridWrapper>
   )
 }
 

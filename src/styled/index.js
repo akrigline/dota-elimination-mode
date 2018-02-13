@@ -23,6 +23,11 @@ export const Button = styled.button`
   }
 `
 
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 const theme = {
   radiant: 'rgb(91, 198, 92)',
   dire: 'rgb(167, 77, 59)'

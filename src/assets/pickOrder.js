@@ -29,11 +29,11 @@ const pickOrder = [
   },
   {
     team: 'team2',
-    pickType: 'ban'
+    pickType: 'pick'
   },
   {
     team: 'team2',
-    pickType: 'ban'
+    pickType: 'pick'
   },
   {
     team: 'firstPick',

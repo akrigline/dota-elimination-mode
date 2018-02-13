@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import changeCase from 'change-case'
 import { compose, withHandlers, pure } from 'recompose'
 import styled, {css} from 'styled-components'
-import pickOrder from '../../assets/pickOrder'
 
 const HeroButtonWrapper = styled.div`
   width: 100%;
