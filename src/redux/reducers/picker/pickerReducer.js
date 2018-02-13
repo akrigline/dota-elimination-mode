@@ -12,7 +12,6 @@ export const initialState = {
 
 export default handleActions({
   [actions.PICK]: (state, action) => {
-    console.log('picking!')
     let newPickList = [...state[action.payload.team]]
     newPickList.push({
       name: action.payload.name,

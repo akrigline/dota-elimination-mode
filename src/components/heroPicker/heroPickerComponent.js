@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import changeCase from 'change-case'
 import { compose, withHandlers } from 'recompose'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 const HeroButtonContainer = styled.div`
   width: 100%;
 `
 
 const HeroButton = styled.button`
+  background: transparent;
   padding: 0;
   border: none;
   width: 100%;
@@ -27,17 +28,19 @@ const HeroButton = styled.button`
     right: 0;
     bottom: 0;
     margin: auto;
-  }
-  &:disabled > img {
-    opacity: 0.5;
+    ${props => props.hasBeenPicked && css`opacity: 0.25`}
   }
 `
 
 function HeroPicker (props) {
   const snakeName = changeCase.snakeCase(props.name)
+  const isDisabled = !props.team
   return (
     <HeroButtonContainer>
-      <HeroButton disabled={props.isDisabled} onClick={props.onClick}>
+      <HeroButton
+        disabled={isDisabled} // This will be determined by whose turn it is.
+        hasBeenPicked={props.hasBeenPicked}
+        onClick={props.onClick}>
         <img
           src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
           alt={props.name} />
@@ -48,16 +51,16 @@ function HeroPicker (props) {
 
 HeroPicker.propTypes = {
   name: PropTypes.string,
-  isDisabled: PropTypes.bool,
+  team: PropTypes.string,
+  hasBeenPicked: PropTypes.bool,
   pick: PropTypes.func
 }
 
 const handlers = {
   onClick: props => () => {
-    console.log(props)
     props.pick({
       name: props.name,
-      team: 'radiant'
+      team: props.team
     })
   }
 }

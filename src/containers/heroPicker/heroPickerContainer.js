@@ -7,7 +7,8 @@ import {actionCreators} from '../../redux/reducers/server/serverActions'
 // Global State
 export function mapStateToProps (state, props) {
   return {
-    isDisabled: state.picker.disabledHeroes.includes(props.name)
+    team: state.ui.team,
+    hasBeenPicked: state.picker.disabledHeroes.includes(props.name)
   }
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
