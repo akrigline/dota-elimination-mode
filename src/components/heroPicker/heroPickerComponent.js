@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import changeCase from 'change-case'
-import { compose, withHandlers } from 'recompose'
+import { compose, withHandlers, pure } from 'recompose'
 import styled, {css} from 'styled-components'
+import pickOrder from '../../assets/pickOrder'
 
-const HeroButtonContainer = styled.div`
+const HeroButtonWrapper = styled.div`
   width: 100%;
 `
 
@@ -34,25 +35,27 @@ const HeroButton = styled.button`
 
 function HeroPicker (props) {
   const snakeName = changeCase.snakeCase(props.name)
-  const isDisabled = !props.team
   return (
-    <HeroButtonContainer>
+    <HeroButtonWrapper>
       <HeroButton
-        disabled={isDisabled} // This will be determined by whose turn it is.
+        disabled={props.isDisabled} // This will be determined by whose turn it is.
         hasBeenPicked={props.hasBeenPicked}
         onClick={props.onClick}>
         <img
           src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
           alt={props.name} />
       </HeroButton>
-    </HeroButtonContainer>
+    </HeroButtonWrapper>
   )
 }
 
 HeroPicker.propTypes = {
   name: PropTypes.string,
   team: PropTypes.string,
+  isDisabled: PropTypes.bool,
   hasBeenPicked: PropTypes.bool,
+  pickType: PropTypes.string,
+  nextStep: PropTypes.func,
   pick: PropTypes.func
 }
 
@@ -60,9 +63,11 @@ const handlers = {
   onClick: props => () => {
     props.pick({
       name: props.name,
-      team: props.team
+      team: props.team,
+      pickType: props.pickType
     })
+    props.nextStep()
   }
 }
 
-export default compose(withHandlers(handlers))(HeroPicker)
+export default compose(pure, withHandlers(handlers))(HeroPicker)

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import heroJson from '../../assets/heroes.json'
 import HeroPicker from '../../containers/heroPicker/heroPickerContainer'
 import styled from 'styled-components'
+import pickOrder from '../../assets/pickOrder'
 
 const AttributeRow = styled.section`
   display: flex;
@@ -41,6 +42,11 @@ const HeroGridDisplay = styled.section`
 `
 
 export default function HeroGrid (props) {
+  const currentStep = pickOrder[props.step]
+  const isTeamFirstPick = props.firstPick === props.team
+  const isCurrentTeamPicking = isTeamFirstPick ? currentStep.team === 'firstPick' : currentStep.team === 'team2'
+  const pickType = pickOrder[props.step].pickType
+  const isDisabled = !props.team || !isCurrentTeamPicking
   return (
     <div>
       {Object.keys(heroJson).map(attribute => (
@@ -48,7 +54,12 @@ export default function HeroGrid (props) {
           <AttributeTitle><h3>{attribute}</h3></AttributeTitle>
           <HeroGridDisplay key={attribute}>
             {heroJson[attribute].map(hero => (
-              <HeroPicker name={hero.name} key={hero.name} />
+              <HeroPicker
+                name={hero.name}
+                key={hero.name}
+                team={props.team}
+                pickType={pickType}
+                isDisabled={isDisabled} />
             ))}
           </HeroGridDisplay>
         </AttributeRow>
@@ -58,5 +69,7 @@ export default function HeroGrid (props) {
 }
 
 HeroGrid.propTypes = {
-  count: PropTypes.number
+  count: PropTypes.number,
+  team: PropTypes.string,
+  step: PropTypes.number
 }

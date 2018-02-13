@@ -1,19 +1,19 @@
 import {connect} from 'react-redux'
 // For Lifecycle composing
 // import {compose, lifecycle} from 'recompose'
-import HeroPicker from '../../components/heroPicker/heroPickerComponent'
-import {actionCreators} from '../../redux/reducers/server/serverActions'
+import HeroGrid from '../../components/heroGrid/heroGridComponent'
+// import {actionCreators} from '../../redux/reducers/server/serverActions'
 
 // Global State
 export function mapStateToProps (state, props) {
   return {
-    hasBeenPicked: state.picker.disabledHeroes.includes(props.name)
+    firstPick: state.picker.firstPick,
+    step: state.picker.step,
+    team: state.ui.team
   }
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
-  pick: actionCreators.pick,
-  nextStep: actionCreators.nextStep
 }
 
 // If you want to use the function mapping
@@ -23,7 +23,7 @@ export const propsMapping = {
 //   }
 // }
 
-export default connect(mapStateToProps, propsMapping)(HeroPicker)
+export default connect(mapStateToProps, propsMapping)(HeroGrid)
 
 // export default compose(
 //   connect(mapStateToProps, propsMapping),
@@ -34,4 +34,4 @@ export default connect(mapStateToProps, propsMapping)(HeroPicker)
 //       }
 //     }
 //   })
-// )(HeroPicker)
+// )(HeroGrid)

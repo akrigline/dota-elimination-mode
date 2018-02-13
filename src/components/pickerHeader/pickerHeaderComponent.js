@@ -18,10 +18,15 @@ const TeamHeader = styled.h1`
     color: ${props => props.theme.dire};
   `}
   ${props => props.radiant && css`
-    color: ${props => props.theme.radiant}
+    color: ${props => props.theme.radiant};
   `}
   ${props => props.current && css`
-    border-bottom: 0.1em solid ${props => props.dire ? props.theme.dire : props.theme.radiant}
+    border-bottom-width: 0.1em;
+    border-bottom-style: solid;
+    ${props => props.dire
+      ? css`border-bottom-color: ${props.theme.dire}`
+      : css`border-bottom-color: ${props.theme.radiant}`
+    }
   `}
 `
 

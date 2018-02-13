@@ -5,9 +5,11 @@ export const actions = myActions
 export const actionCreators = myActionCreators
 
 export const initialState = {
+  firstPick: 'dire',
   disabledHeroes: [],
   radiant: [],
-  dire: []
+  dire: [],
+  step: 0
 }
 
 export default handleActions({
@@ -15,7 +17,7 @@ export default handleActions({
     let newPickList = [...state[action.payload.team]]
     newPickList.push({
       name: action.payload.name,
-      status: 'pick'
+      pickType: action.payload.pickType
     })
     let newDisabledHeroes = [...state.disabledHeroes]
     newDisabledHeroes.push(action.payload.name)
@@ -30,6 +32,12 @@ export default handleActions({
     return {
       ...state,
       ...action.payload
+    }
+  },
+  [actions.NEXT_STEP]: (state, action) => {
+    return {
+      ...state,
+      step: state.step + 1
     }
   },
   [actions.RESET]: (state, action) => {
