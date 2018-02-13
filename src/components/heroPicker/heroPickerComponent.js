@@ -37,7 +37,7 @@ function HeroPicker (props) {
   return (
     <HeroButtonWrapper>
       <HeroButton
-        disabled={props.isDisabled} // This will be determined by whose turn it is.
+        disabled={props.isDisabled || props.hasBeenPicked} // This will be determined by whose turn it is.
         hasBeenPicked={props.hasBeenPicked}
         onClick={props.onClick}>
         <img

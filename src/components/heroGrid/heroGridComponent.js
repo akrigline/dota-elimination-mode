@@ -49,7 +49,7 @@ export default function HeroGrid (props) {
   const currentStep = pickOrder[props.step]
   const isTeamFirstPick = props.firstPick === props.team
   const isCurrentTeamPicking = isTeamFirstPick ? currentStep.team === 'firstPick' : currentStep.team === 'team2'
-  const pickType = pickOrder[props.step].pickType
+  const pickType = currentStep.pickType
   const isDisabled = !props.team || !isCurrentTeamPicking
   return (
     <HeroGridWrapper>

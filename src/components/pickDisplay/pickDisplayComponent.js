@@ -5,7 +5,7 @@ import styled, {css} from 'styled-components'
 import pickOrder from '../../assets/pickOrder'
 
 const PickDisplayWrapper = styled.div`
-  flex-basis: 20%;
+  flex-basis: 15%;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 3rem;
@@ -15,32 +15,17 @@ const PickDisplayWrapper = styled.div`
 const PickColumn = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
-  flex-basis: 40%;
+  width: calc(50% - 1rem);
   margin: 0.5rem;
   &:first-child {
     align-items: flex-end;
   }
 `
 
-const NumberColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 20%;
-  flex-grow: 1;
-  padding-top: calc(1.17em + 1em + 1em + 0.75em);
-  align-items: center;
-`
-
-const NumberEntry = styled.div`
-  font-size: 0.7rem;
-  color: white;
-  margin-bottom: ${props => props.pick ? '0.75em' : '0.45em'};
-  margin-top: ${props => props.pick ? '0.75em' : '0.45em'};
-`
-
 const Selection = styled.div`
   width: ${props => props.ban ? '75%' : '100%'};
+  margin-top: ${props => props.ban ? '0.1em' : '0.5em'};
+  margin-bottom: ${props => props.ban ? '0.1em' : '0.5em'};
   ${props => props.ban && css`opacity: 0.5;`}
 `
 
@@ -51,6 +36,10 @@ const ImageWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  ${props => props.currentStep && css`border-color: white;`}
   > img {
     height: 100%;
     position: absolute;
@@ -78,7 +67,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'}>
-              <ImageWrapper>
+              <ImageWrapper currentStep={props.step === pick.number - 1}>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}
@@ -87,11 +76,6 @@ export default function PickDisplay (props) {
           )
         })}
       </PickColumn>
-      <NumberColumn>
-        {pickOrder.map((pick, index) => (
-          <NumberEntry pick={pick.pickType === 'pick'}>{index + 1}</NumberEntry>
-        ))}
-      </NumberColumn>
       <PickColumn>
         <h3>Dire</h3>
         {direPicks.map((pick, index) => {
@@ -102,7 +86,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'}>
-              <ImageWrapper>
+              <ImageWrapper currentStep={props.step === pick.number - 1}>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}

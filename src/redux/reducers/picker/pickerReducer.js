@@ -35,9 +35,16 @@ export default handleActions({
     }
   },
   [actions.NEXT_STEP]: (state, action) => {
-    return {
-      ...state,
-      step: state.step + 1
+    if (state.step < 22) {
+      return {
+        ...state,
+        step: state.step + 1
+      }
+    } else {
+      return {
+        ...state,
+        step: 0
+      }
     }
   },
   [actions.RESET]: (state, action) => {
