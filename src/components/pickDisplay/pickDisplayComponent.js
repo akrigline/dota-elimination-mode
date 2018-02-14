@@ -22,8 +22,20 @@ const PickColumn = styled.div`
   }
 `
 
+const ColumnHeader = styled.h3`
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  ${props => props.dire && css`
+    color: ${props => props.theme.dire};
+  `}
+  ${props => props.radiant && css`
+    color: ${props => props.theme.radiant};
+  `}
+`
+
 const Selection = styled.div`
-  width: ${props => props.ban ? '75%' : '100%'};
+  width: ${props => props.ban ? '60%' : '100%'};
   margin-top: ${props => props.ban ? '0.1em' : '0.5em'};
   margin-bottom: ${props => props.ban ? '0.1em' : '0.5em'};
   ${props => props.ban && css`opacity: 0.5;`}
@@ -58,7 +70,7 @@ export default function PickDisplay (props) {
   return (
     <PickDisplayWrapper>
       <PickColumn>
-        <h3>Radiant</h3>
+        <ColumnHeader radiant>Radiant</ColumnHeader>
         {radiantPicks.map((pick, index) => {
           const relevantPick = props.radiant[index]
           let snakeName
@@ -77,7 +89,7 @@ export default function PickDisplay (props) {
         })}
       </PickColumn>
       <PickColumn>
-        <h3>Dire</h3>
+        <ColumnHeader dire>Dire</ColumnHeader>
         {direPicks.map((pick, index) => {
           const relevantPick = props.dire[index]
           let snakeName

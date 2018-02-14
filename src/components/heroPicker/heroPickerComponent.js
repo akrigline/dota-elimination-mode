@@ -4,10 +4,6 @@ import changeCase from 'change-case'
 import { compose, withHandlers, pure } from 'recompose'
 import styled, {css} from 'styled-components'
 
-const HeroButtonWrapper = styled.div`
-  width: 100%;
-`
-
 const HeroButton = styled.button`
   background: transparent;
   padding: 0;
@@ -16,15 +12,16 @@ const HeroButton = styled.button`
   margin: 0;
   display: block;
   position: relative;
-  padding-bottom: 100%;
+  padding-bottom: 200%;
   overflow: hidden;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
   transform: scale(1);
   transition: transform 300ms;
   > img {
     height: 100%;
     position: absolute;
     top: 0;
-    left: -50%;
+    left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
@@ -35,16 +32,14 @@ const HeroButton = styled.button`
 function HeroPicker (props) {
   const snakeName = changeCase.snakeCase(props.name)
   return (
-    <HeroButtonWrapper>
-      <HeroButton
-        disabled={props.isDisabled || props.hasBeenPicked} // This will be determined by whose turn it is.
-        hasBeenPicked={props.hasBeenPicked}
-        onClick={props.onClick}>
-        <img
-          src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
-          alt={props.name} />
-      </HeroButton>
-    </HeroButtonWrapper>
+    <HeroButton
+      disabled={props.isDisabled || props.hasBeenPicked} // This will be determined by whose turn it is.
+      hasBeenPicked={props.hasBeenPicked}
+      onClick={props.onClick}>
+      <img
+        src={require(`../../assets/dotaHeroesTall/${snakeName}_tall.jpg`)}
+        alt={props.name} />
+    </HeroButton>
   )
 }
 
