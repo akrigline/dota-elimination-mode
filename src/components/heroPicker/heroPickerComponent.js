@@ -3,28 +3,18 @@ import PropTypes from 'prop-types'
 import changeCase from 'change-case'
 import { compose, withHandlers, pure } from 'recompose'
 import styled, {css} from 'styled-components'
+import {AspectRatioImage} from '../../styled'
 
 const HeroButton = styled.button`
   background: transparent;
   padding: 0;
   border: none;
-  width: 100%;
   margin: 0;
   display: block;
-  position: relative;
-  padding-bottom: 200%;
-  overflow: hidden;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
   transform: scale(1);
   transition: transform 300ms;
-  > img {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+  img {
     ${props => props.hasBeenPicked && css`opacity: 0.25`}
   }
 `
@@ -36,9 +26,11 @@ function HeroPicker (props) {
       disabled={props.isDisabled || props.hasBeenPicked} // This will be determined by whose turn it is.
       hasBeenPicked={props.hasBeenPicked}
       onClick={props.onClick}>
-      <img
-        src={require(`../../assets/dotaHeroesTall/${snakeName}_tall.jpg`)}
-        alt={props.name} />
+      <AspectRatioImage ratio='200%'>
+        <img
+          src={require(`../../assets/dotaHeroesTall/${snakeName}_tall.jpg`)}
+          alt={props.name} />
+      </AspectRatioImage>
     </HeroButton>
   )
 }

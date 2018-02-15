@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import changeCase from 'change-case'
-import styled, {css} from 'styled-components'
+import styled, {css, extend} from 'styled-components'
 import pickOrder from '../../assets/pickOrder'
+import {AspectRatioImage} from '../../styled'
 
 const PickDisplayWrapper = styled.div`
   flex-basis: 15%;
@@ -41,10 +42,7 @@ const Selection = styled.div`
   ${props => props.ban && css`opacity: 0.5;`}
 `
 
-const ImageWrapper = styled.div`
-  width: 100%;
-  padding-top: 56.25%;
-  position: relative;
+const ImageWrapper = AspectRatioImage.extend`
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   overflow: hidden;
@@ -52,15 +50,6 @@ const ImageWrapper = styled.div`
   border-style: solid;
   border-color: transparent;
   ${props => props.currentStep && css`border-color: white;`}
-  > img {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-  }
 `
 
 export default function PickDisplay (props) {
@@ -79,7 +68,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'}>
-              <ImageWrapper currentStep={props.step === pick.number - 1}>
+              <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}
@@ -98,7 +87,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'}>
-              <ImageWrapper currentStep={props.step === pick.number - 1}>
+              <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}

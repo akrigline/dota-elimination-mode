@@ -28,6 +28,24 @@ export const Row = styled.div`
   flex-direction: row;
 `
 
+export const AspectRatioImage = styled.div`
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-bottom: ${props => props.ratio};
+  overflow: hidden;
+  ${props => props.css && props.css}
+  > img {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+`
+
 const theme = {
   radiant: 'rgb(91, 198, 92)',
   dire: 'rgb(167, 77, 59)'
