@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import changeCase from 'change-case'
-import styled, {css, extend} from 'styled-components'
+import styled, {css} from 'styled-components'
 import pickOrder from '../../assets/pickOrder'
 import {AspectRatioImage} from '../../styled'
 
@@ -24,14 +24,18 @@ const PickColumn = styled.div`
 `
 
 const ColumnHeader = styled.h3`
-  margin: 0;
+  margin: 0.5em 0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  padding: 0.3em;
   ${props => props.dire && css`
     color: ${props => props.theme.dire};
   `}
   ${props => props.radiant && css`
     color: ${props => props.theme.radiant};
+  `}
+  ${props => props.picking && css`
+    box-shadow: 0 0 5px ${props => props.dire ? props.theme.dire : props.theme.radiant}
   `}
 `
 
@@ -56,10 +60,14 @@ export default function PickDisplay (props) {
   const isRadiantFirstPick = props.firstPick === 'radiant'
   const radiantPicks = pickOrder.filter(pick => pick.team === (isRadiantFirstPick ? 'firstPick' : 'team2'))
   const direPicks = pickOrder.filter(pick => pick.team === (isRadiantFirstPick ? 'team2' : 'firstPick'))
+
+  const currentStep = pickOrder[props.step]
+  const isDirePicking = (props.firstPick === 'dire' && currentStep.team === 'firstPick') || (props.firstPick === 'radiant' && currentStep.team === 'team2')
+  console.log(isDirePicking, props.firstPick, currentStep.team)
   return (
     <PickDisplayWrapper>
       <PickColumn>
-        <ColumnHeader radiant>Radiant</ColumnHeader>
+        <ColumnHeader radiant picking={!isDirePicking}>Radiant</ColumnHeader>
         {radiantPicks.map((pick, index) => {
           const relevantPick = props.radiant[index]
           let snakeName
@@ -67,7 +75,7 @@ export default function PickDisplay (props) {
             snakeName = changeCase.snakeCase(relevantPick.name)
           }
           return (
-            <Selection ban={pick.pickType === 'ban'}>
+            <Selection ban={pick.pickType === 'ban'} key={`radiant${index}`}>
               <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
@@ -78,7 +86,7 @@ export default function PickDisplay (props) {
         })}
       </PickColumn>
       <PickColumn>
-        <ColumnHeader dire>Dire</ColumnHeader>
+        <ColumnHeader dire picking={isDirePicking}>Dire</ColumnHeader>
         {direPicks.map((pick, index) => {
           const relevantPick = props.dire[index]
           let snakeName
@@ -86,7 +94,7 @@ export default function PickDisplay (props) {
             snakeName = changeCase.snakeCase(relevantPick.name)
           }
           return (
-            <Selection ban={pick.pickType === 'ban'}>
+            <Selection ban={pick.pickType === 'ban'} key={`dire${index}`}>
               <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}

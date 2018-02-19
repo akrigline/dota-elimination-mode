@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.48baaab1.css",
   "main.css.map": "static/css/main.48baaab1.css.map",
-  "main.js": "static/js/main.b4908e69.js",
-  "main.js.map": "static/js/main.b4908e69.js.map",
+  "main.js": "static/js/main.603afab1.js",
+  "main.js.map": "static/js/main.603afab1.js.map",
   "static/media/abaddon_full.png": "static/media/abaddon_full.50062f25.png",
   "static/media/alchemist_full.png": "static/media/alchemist_full.449ab305.png",
   "static/media/ancient_apparition_full.png": "static/media/ancient_apparition_full.848da2a4.png",
@@ -23,6 +23,7 @@
   "static/media/chen_full.png": "static/media/chen_full.dc46d471.png",
   "static/media/clinkz_full.png": "static/media/clinkz_full.43dd6e7f.png",
   "static/media/clockwerk_full.png": "static/media/clockwerk_full.e1541d37.png",
+  "static/media/crown.svg": "static/media/crown.96ab881c.svg",
   "static/media/crystal_maiden_full.png": "static/media/crystal_maiden_full.fa9def33.png",
   "static/media/dark_seer_full.png": "static/media/dark_seer_full.51d3fe50.png",
   "static/media/dark_willow_full.png": "static/media/dark_willow_full.5e2e7cd6.png",

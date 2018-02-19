@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Title } from '../../styled'
 import styled from 'styled-components'
 
 class AppWrapper extends Component {
@@ -14,7 +13,6 @@ class AppWrapper extends Component {
     `
     return (
       <AppWrapper>
-        <Title>Elimination Mode</Title>
         {this.props.children}
       </AppWrapper>
     )

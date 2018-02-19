@@ -54,7 +54,7 @@ export default function HeroGrid (props) {
   return (
     <HeroGridWrapper>
       {Object.keys(heroJson).map(attribute => (
-        <AttributeRow>
+        <AttributeRow key={attribute}>
           <AttributeTitle><h3>{attribute}</h3></AttributeTitle>
           <HeroGridDisplay key={attribute}>
             {heroJson[attribute].map(hero => (

@@ -4,6 +4,7 @@ import changeCase from 'change-case'
 import { compose, withHandlers, pure } from 'recompose'
 import styled, {css} from 'styled-components'
 import {AspectRatioImage} from '../../styled'
+import { triggerReset } from '../../services/api'
 
 const HeroButton = styled.button`
   background: transparent;
@@ -52,6 +53,7 @@ const handlers = {
       team: props.team,
       pickType: props.pickType
     })
+    triggerReset()
     props.nextStep()
   }
 }

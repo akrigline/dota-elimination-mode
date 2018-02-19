@@ -1,4 +1,4 @@
-const pickOrder = [
+module.exports = [
   {
     team: 'firstPick',
     pickType: 'ban',
@@ -110,4 +110,3 @@ const pickOrder = [
     number: 22
   }
 ]
-export default pickOrder

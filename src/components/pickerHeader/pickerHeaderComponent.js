@@ -1,19 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
-import {Button} from '../../styled'
+import {Row, SecondaryButton} from '../../styled'
 import { compose, withHandlers } from 'recompose'
+import Crown from '../../assets/icons/crown.svg'
+import Timer from '../../containers/timer/timerContainer'
 
 const PickerHeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+`
+
+const CrownImage = styled.img`
+  width: 0.5em;
+  display: inline-block;
+  vertical-align: middle;
 `
 
 const TeamHeader = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  margin: 1rem;
   ${props => props.dire && css`
     color: ${props => props.theme.dire};
   `}
@@ -33,14 +43,19 @@ const TeamHeader = styled.h1`
 export function PickerHeader (props) {
   return (
     <PickerHeaderWrapper>
-      {!props.team
-        ? <Button onClick={props.setRadiant} radiant>Radiant</Button>
-        : <TeamHeader radiant current={props.team === 'radiant'}>Radiant</TeamHeader>
-      }
-      {!props.team
-        ? <Button onClick={props.setDire} dire>Dire</Button>
-        : <TeamHeader dire current={props.team === 'dire'}>Dire</TeamHeader>
-      }
+      <Row>
+        <TeamHeader radiant>
+          Radiant {props.team && props.team === 'radiant' && <CrownImage src={Crown} />}
+        </TeamHeader>
+        {!props.team && <SecondaryButton onClick={props.setRadiant} radiant>Captain</SecondaryButton>}
+      </Row>
+      <Timer />
+      <Row>
+        {!props.team && <SecondaryButton onClick={props.setDire} dire>Captain</SecondaryButton>}
+        <TeamHeader dire>
+          {props.team && props.team === 'dire' && <CrownImage src={Crown} />} Dire
+        </TeamHeader>
+      </Row>
     </PickerHeaderWrapper>
   )
 }

@@ -1,20 +1,24 @@
 import {connect} from 'react-redux'
 // For Lifecycle composing
 // import {compose, lifecycle} from 'recompose'
-import PickDisplay from '../../components/pickDisplay/pickDisplayComponent'
-// import {actionCreators} from '../../redux/reducers/ui/uiReducer'
+import Timer from '../../components/timer/timerComponent'
+import {actionCreators} from '../../redux/reducers/server/serverActions'
+import pickOrder from '../../assets/pickOrder'
 
 // Global State
 export function mapStateToProps (state, props) {
   return {
-    radiant: state.picker.radiant,
-    dire: state.picker.dire,
+    team: state.ui.team,
     step: state.picker.step,
-    firstPick: state.picker.firstPick
+    firstPick: state.picker.firstPick,
+    disabledHeroes: state.picker.disabledHeroes,
+    pickType: pickOrder[state.picker.step].pickType
   }
 }
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
+  pick: actionCreators.pick,
+  nextStep: actionCreators.nextStep
 }
 
 // If you want to use the function mapping
@@ -24,7 +28,7 @@ export const propsMapping = {
 //   }
 // }
 
-export default connect(mapStateToProps, propsMapping)(PickDisplay)
+export default connect(mapStateToProps, propsMapping)(Timer)
 
 // export default compose(
 //   connect(mapStateToProps, propsMapping),
@@ -35,4 +39,4 @@ export default connect(mapStateToProps, propsMapping)(PickDisplay)
 //       }
 //     }
 //   })
-// )(PickDisplay)
+// )(Timer)

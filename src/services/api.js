@@ -1,5 +1,6 @@
 import openSocket from 'socket.io-client'
-const socket = openSocket('/update')
+const updateSocket = openSocket('/update')
+const timeSocket = openSocket('/timer')
 
 /**
  * Subscribes the Client to the /update socket
@@ -8,5 +9,22 @@ const socket = openSocket('/update')
  * @param {any} cb - Callback after 'updateMe' has been received from the server
  */
 export const subscribeToUpdate = (cb) => {
-  socket.on('updateMe', () => cb(null))
+  updateSocket.on('updateMe', () => cb(null))
+}
+
+export const subscribeToTime = (cb) => {
+  timeSocket.on('time', (time) => cb(null, time))
+}
+
+export const startTimer = () => {
+  console.log('start timer', timeSocket)
+  timeSocket.emit('start')
+}
+
+export const triggerReset = () => {
+  timeSocket.emit('pick')
+}
+
+export const subscribeToRandom = (cb) => {
+  timeSocket.on('random', (team) => cb(null, team))
 }

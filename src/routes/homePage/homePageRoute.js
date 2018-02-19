@@ -3,7 +3,6 @@ import React from 'react'
 import HeroGrid from '../../containers/heroGrid/heroGridContainer'
 import PickerHeader from '../../containers/pickerHeader/pickerHeaderContainer'
 import PickDisplay from '../../containers/pickDisplay/pickDisplayContainer'
-import ResetButton from '../../containers/resetButton/resetButtonContainer'
 import {Row} from '../../styled'
 
 class HomePageRoute extends React.Component {
@@ -15,7 +14,6 @@ class HomePageRoute extends React.Component {
           <HeroGrid />
           <PickDisplay />
         </Row>
-        <ResetButton>Reset</ResetButton>
       </div>
     )
   }

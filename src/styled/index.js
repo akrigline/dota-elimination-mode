@@ -9,6 +9,7 @@ export const Title = styled.h1`
 export const Button = styled.button`
   border: none;
   color: white;
+  border-radius: 0.2rem;
   ${
     props => (props.dire || props.radiant)
     ? css`
@@ -23,9 +24,38 @@ export const Button = styled.button`
   }
 `
 
+export const SecondaryButton = styled.button`
+  border-wdith: 1px;
+  border-style: solid;
+  background: none;
+  border-radius: 0.2rem;
+  ${
+    props => (props.dire || props.radiant)
+    ? css`
+      border-color: ${props => props.dire
+        ? props.theme.dire
+        : props.theme.radiant
+      };
+      color: ${props => props.dire
+        ? props.theme.dire
+        : props.theme.radiant
+      };
+    `
+    : css`
+      border-color: white;
+      color: white;
+    `
+  }
+`
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  ${props => props.grow && css`
+    flex-grow: 1;
+    justify-content: space-between;
+  `}
 `
 
 export const AspectRatioImage = styled.div`
