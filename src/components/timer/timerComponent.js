@@ -43,6 +43,11 @@ class Timer extends React.Component {
         time
       })
     })
+    const heroValues = Object.values(heroJson)
+    const heroesConcat = heroValues[0].concat(heroValues[1], heroValues[2])
+    this.heroesFiltered = heroesConcat.filter(hero => {
+      return !this.props.disabledHeroes.includes(hero.name)
+    })
   }
 
   randomCallback (err, team) {
@@ -50,12 +55,7 @@ class Timer extends React.Component {
       console.log(err)
     }
 
-    const heroValues = Object.values(heroJson)
-    const heroesConcat = heroValues[0].concat(heroValues[1], heroValues[2])
-    const heroesFiltered = heroesConcat.filter(hero => {
-      return !this.props.disabledHeroes.includes(hero.name)
-    })
-    const chosen = heroesFiltered[Math.floor(Math.random() * heroesFiltered.length)]
+    const chosen = this.heroesFiltered[Math.floor(Math.random() * this.heroesFiltered.length)]
     let teamToPick
     if (team === 'firstPick') {
       teamToPick = this.props.firstPick
@@ -94,7 +94,8 @@ class Timer extends React.Component {
     } else {
       return (
         <div>
-          {this.props.team && <Button
+          {this.props.team && this.heroesFiltered.length > 22 &&
+          <Button
             radiant={this.props.firstPick === 'radiant'}
             dire={this.props.firstPick === 'dire'}
             onClick={() => {
@@ -110,6 +111,12 @@ class Timer extends React.Component {
 }
 
 Timer.propTypes = {
-
+  team: PropTypes.string,
+  step: PropTypes.number,
+  firstPick: PropTypes.string,
+  disabledHeroes: PropTypes.array,
+  pickType: PropTypes.string,
+  pick: PropTypes.func,
+  nextStep: PropTypes.func
 }
 export default Timer
