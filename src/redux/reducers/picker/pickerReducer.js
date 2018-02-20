@@ -35,6 +35,15 @@ export default handleActions({
     }
   },
   [actions.NEXT_STEP]: (state, action) => {
+    console.log(state.step)
+    if (state.step === 0) {
+      return {
+        ...state,
+        step: state.step + 1,
+        radiant: [],
+        dire: []
+      }
+    }
     if (state.step < 22) {
       return {
         ...state,

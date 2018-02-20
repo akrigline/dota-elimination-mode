@@ -63,11 +63,11 @@ export default function PickDisplay (props) {
 
   const currentStep = pickOrder[props.step]
   const isDirePicking = (props.firstPick === 'dire' && currentStep.team === 'firstPick') || (props.firstPick === 'radiant' && currentStep.team === 'team2')
-  console.log(isDirePicking, props.firstPick, currentStep.team)
+  const isRadiantPicking = (props.firstPick === 'radiant' && currentStep.team === 'firstPick') || (props.firstPick === 'dire' && currentStep.team === 'team2')
   return (
     <PickDisplayWrapper>
       <PickColumn>
-        <ColumnHeader radiant picking={!isDirePicking}>Radiant</ColumnHeader>
+        <ColumnHeader radiant picking={isRadiantPicking}>Radiant</ColumnHeader>
         {radiantPicks.map((pick, index) => {
           const relevantPick = props.radiant[index]
           let snakeName
@@ -76,7 +76,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'} key={`radiant${index}`}>
-              <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
+              <ImageWrapper currentStep={props.step === pick.number} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}
@@ -95,7 +95,7 @@ export default function PickDisplay (props) {
           }
           return (
             <Selection ban={pick.pickType === 'ban'} key={`dire${index}`}>
-              <ImageWrapper currentStep={props.step === pick.number - 1} ratio='56.25%'>
+              <ImageWrapper currentStep={props.step === pick.number} ratio='56.25%'>
                 {relevantPick && <img
                   src={require(`../../assets/dotaHeroes/${snakeName}_full.png`)}
                   alt={relevantPick.name} />}

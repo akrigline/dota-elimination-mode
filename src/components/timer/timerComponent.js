@@ -38,6 +38,7 @@ class Timer extends React.Component {
       if (err) {
         console.log(err)
       }
+      console.log(time)
       this.setState({
         time
       })
@@ -96,7 +97,10 @@ class Timer extends React.Component {
           {this.props.team && <Button
             radiant={this.props.firstPick === 'radiant'}
             dire={this.props.firstPick === 'dire'}
-            onClick={() => { startTimer() }}>
+            onClick={() => {
+              startTimer()
+              this.props.nextStep()
+            }}>
             Start
           </Button>}
         </div>

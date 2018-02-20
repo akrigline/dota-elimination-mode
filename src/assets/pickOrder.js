@@ -1,5 +1,10 @@
 module.exports = [
   {
+    team: 'none',
+    pickType: null,
+    number: 0
+  },
+  {
     team: 'firstPick',
     pickType: 'ban',
     number: 1

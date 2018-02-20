@@ -16,11 +16,13 @@ io.of('/update').on('connection', (client) => {
   client.broadcast.emit('updateMe', null)
 })
 
+const reserveTime = 130
+
 let timerClients = []
 let step = 0
 let reserve = {
-  firstPick: 130,
-  team2: 130
+  firstPick: reserveTime,
+  team2: reserveTime
 }
 let team = 'firstPick'
 let time
@@ -34,6 +36,7 @@ io.of('/timer').on('connection', (client) => {
   client.on('start', () => {
     console.log('starting', client.id)
     time = timePerTurn
+    step = step + 1
 
     timer = setInterval(() => {
       if (time >= 0) {
@@ -59,7 +62,24 @@ io.of('/timer').on('connection', (client) => {
           time = timePerTurn
           step = step + 1
           team = pickOrder[step] && pickOrder[step].team
+        } else if (step === 22) {
+          pickOrder[step] && timerClients[0].emit('random', pickOrder[step].team)
+          timerClients.forEach(timerClient => timerClient.emit('time', null))
+          reserve = {
+            firstPick: reserveTime,
+            team2: reserveTime
+          }
+          step = 0
+          team = 'firstPick'
+          clearInterval(timer)
         } else {
+          timerClients.forEach(timerClient => timerClient.emit('time', null))
+          reserve = {
+            firstPick: reserveTime,
+            team2: reserveTime
+          }
+          step = 0
+          team = 'firstPick'
           clearInterval(timer)
         }
       }
@@ -72,6 +92,13 @@ io.of('/timer').on('connection', (client) => {
       step = step + 1
       team = pickOrder[step] && pickOrder[step].team
     } else {
+      timerClients.forEach(timerClient => timerClient.emit('time', null))
+      reserve = {
+        firstPick: reserveTime,
+        team2: reserveTime
+      }
+      step = 0
+      team = 'firstPick'
       clearInterval(timer)
     }
   })
@@ -79,13 +106,13 @@ io.of('/timer').on('connection', (client) => {
   client.on('disconnect', () => {
     timerClients.splice(timerClients.indexOf(client), 1)
     if (timerClients.length < 1) {
-      clearInterval(timer)
       reserve = {
-        firstPick: 130,
-        team2: 130
+        firstPick: reserveTime,
+        team2: reserveTime
       }
       step = 0
       team = 'firstPick'
+      clearInterval(timer)
     }
   })
 })
