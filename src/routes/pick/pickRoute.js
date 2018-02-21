@@ -5,7 +5,7 @@ import PickerHeader from '../../containers/pickerHeader/pickerHeaderContainer'
 import PickDisplay from '../../containers/pickDisplay/pickDisplayContainer'
 import {Row} from '../../styled'
 
-class HomePageRoute extends React.Component {
+class PickRoute extends React.Component {
   render () {
     return (
       <div>
@@ -18,4 +18,4 @@ class HomePageRoute extends React.Component {
     )
   }
 }
-export default HomePageRoute
+export default PickRoute

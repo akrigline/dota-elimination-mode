@@ -3,7 +3,16 @@ import styled, {css} from 'styled-components'
 export const Title = styled.h1`
   font-size: 2em;
   text-align: center;
-  font-color: white;
+  color: white;
+`
+
+export const SubTitle = styled.h2`
+  font-size: 1.6rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  > span {
+    text-decoration: line-through;
+  }
 `
 
 export const Button = styled.button`
