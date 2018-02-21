@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 // For Lifecycle composing
 import {compose, lifecycle} from 'recompose'
-import HomePage from '../../routes/homePage/homePageRoute'
+import PickRoute from '../../routes/pick/pickRoute'
 import {actionCreators} from '../../redux/reducers/server/serverActions'
 import { subscribeToUpdate } from '../../services/api'
 
@@ -40,4 +40,4 @@ export default compose(
       }
     }
   })
-)(HomePage)
+)(PickRoute)
