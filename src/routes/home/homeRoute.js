@@ -34,7 +34,6 @@ const StyledLink = styled(Link)`
 class HomeRoute extends React.Component {
   render () {
     const randomAnimals = hri.random()
-    console.log(randomAnimals)
     return (
       <Wrapper>
         {randomAnimals && <StyledLink to={`/${randomAnimals}`}>Start a New Game</StyledLink>}

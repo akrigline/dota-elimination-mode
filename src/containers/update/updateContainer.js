@@ -34,7 +34,6 @@ export default compose(
 
       if (this.props.updateServer) {
         subscribeToUpdate((err) => {
-          console.log('updateme')
           if (err) {
             console.log(err)
           } else {

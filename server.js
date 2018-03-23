@@ -98,7 +98,6 @@ io.on('connection', client => {
           clearInterval(timer)
         }
       }
-      console.log('second')
     }, 1000)
   })
 

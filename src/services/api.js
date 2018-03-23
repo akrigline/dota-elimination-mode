@@ -20,7 +20,6 @@ export const subscribeToTime = (cb) => {
 }
 
 export const startTimer = () => {
-  console.log('start timer', socket)
   socket.emit('start')
 }
 
@@ -29,10 +28,7 @@ export const triggerReset = () => {
 }
 
 export const subscribeToRandom = (cb) => {
-  socket.on('random', (team) => {
-    console.log('randoming received?')
-    cb(null, team)
-  })
+  socket.on('random', (team) => cb(null, team))
 }
 
 export default socket
