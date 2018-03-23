@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {compose, lifecycle} from 'recompose'
 import PickRoute from '../../routes/pick/pickRoute'
 import {actionCreators} from '../../redux/reducers/server/serverActions'
-import { subscribeToUpdate } from '../../services/api'
+import { subscribeToUpdate, joinRoom } from '../../services/api'
 
 // Global State
 export function mapStateToProps (state, props) {
@@ -29,8 +29,12 @@ export default compose(
   connect(mapStateToProps, propsMapping),
   lifecycle({
     componentDidMount: function () {
+      const roomToJoin = this.props.location.pathname.replace('/', '')
+      joinRoom(roomToJoin)
+
       if (this.props.updateServer) {
         subscribeToUpdate((err) => {
+          console.log('updateme')
           if (err) {
             console.log(err)
           } else {

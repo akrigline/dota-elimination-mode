@@ -1,6 +1,5 @@
 import openSocket from 'socket.io-client'
-const updateSocket = openSocket('/update')
-const timeSocket = openSocket('/timer')
+const socket = openSocket('/')
 
 /**
  * Subscribes the Client to the /update socket
@@ -9,22 +8,31 @@ const timeSocket = openSocket('/timer')
  * @param {any} cb - Callback after 'updateMe' has been received from the server
  */
 export const subscribeToUpdate = (cb) => {
-  updateSocket.on('updateMe', () => cb(null))
+  socket.on('updateMe', () => cb(null))
+}
+
+export const joinRoom = (room) => {
+  socket.emit('join', room)
 }
 
 export const subscribeToTime = (cb) => {
-  timeSocket.on('time', (time) => cb(null, time))
+  socket.on('time', (time) => cb(null, time))
 }
 
 export const startTimer = () => {
-  console.log('start timer', timeSocket)
-  timeSocket.emit('start')
+  console.log('start timer', socket)
+  socket.emit('start')
 }
 
 export const triggerReset = () => {
-  timeSocket.emit('pick')
+  socket.emit('pick')
 }
 
 export const subscribeToRandom = (cb) => {
-  timeSocket.on('random', (team) => cb(null, team))
+  socket.on('random', (team) => {
+    console.log('randoming received?')
+    cb(null, team)
+  })
 }
+
+export default socket

@@ -51,6 +51,7 @@ class Timer extends React.Component {
   }
 
   randomCallback (err, team) {
+    console.log('randoming')
     if (err) {
       console.log(err)
     }
