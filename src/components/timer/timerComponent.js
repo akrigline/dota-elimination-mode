@@ -6,6 +6,16 @@ import pickOrder from '../../assets/pickOrder'
 import styled from 'styled-components'
 import {Button, Row} from '../../styled'
 
+const ButtonWrapper = Row.extend`
+  justify-content: space-between;
+`
+
+const Who = styled.h3`
+  margin: 0.2em;
+  text-align: center;
+  color: #fff;
+`
+
 const DireReserve = styled.p`
   font-size: 1rem;
   font-weight: bold;
@@ -92,17 +102,28 @@ class Timer extends React.Component {
       )
     } else {
       return (
-        <div>
-          {this.props.team && this.heroesFiltered.length > 22 &&
-          <Button
-            radiant={this.props.firstPick === 'radiant'}
-            dire={this.props.firstPick === 'dire'}
-            onClick={() => {
-              startTimer()
-              this.props.nextStep()
-            }}>
-            Start
-          </Button>}
+        this.props.team && this.heroesFiltered.length > 22 && <div>
+          <Who>Who has First Pick?</Who>
+          <ButtonWrapper>
+            <Button
+              radiant
+              onClick={() => {
+                this.props.setFirstPick('radiant')
+                startTimer()
+                this.props.nextStep()
+              }}>
+              Radiant
+            </Button>
+            <Button
+              dire
+              onClick={() => {
+                this.props.setFirstPick('dire')
+                startTimer()
+                this.props.nextStep()
+              }}>
+              Dire
+            </Button>
+          </ButtonWrapper>
         </div>
       )
     }
@@ -116,6 +137,7 @@ Timer.propTypes = {
   disabledHeroes: PropTypes.array,
   pickType: PropTypes.string,
   pick: PropTypes.func,
-  nextStep: PropTypes.func
+  nextStep: PropTypes.func,
+  setFirstPick: PropTypes.func
 }
 export default Timer

@@ -18,7 +18,8 @@ export function mapStateToProps (state, props) {
 // In Object form, each funciton is automatically wrapped in a dispatch
 export const propsMapping = {
   pick: actionCreators.pick,
-  nextStep: actionCreators.nextStep
+  nextStep: actionCreators.nextStep,
+  setFirstPick: actionCreators.setFirstPick
 }
 
 // If you want to use the function mapping

@@ -56,6 +56,12 @@ export default handleActions({
       }
     }
   },
+  [actions.SET_FIRST_PICK]: (state, action) => {
+    return {
+      ...state,
+      firstPick: action.payload
+    }
+  },
   [actions.RESET]: (state, action) => {
     return {...initialState}
   }
