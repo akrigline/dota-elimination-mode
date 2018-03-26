@@ -28,14 +28,12 @@ export default handleActions({
     }
   },
   [actions.UPDATE]: (state, action) => {
-    console.log('updating')
     return {
       ...state,
       ...action.payload
     }
   },
   [actions.NEXT_STEP]: (state, action) => {
-    console.log(state.step)
     if (state.step === 0) {
       return {
         ...state,
