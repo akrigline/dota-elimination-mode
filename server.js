@@ -12,8 +12,8 @@ app.get('/', function (req, res) {
   res.sendfile(path.join(__dirname, 'build', 'index.html'))
 })
 
-const reserveTime = 1
-const timePerTurn = 1
+const reserveTime = 130
+const timePerTurn = 30
 
 const rooms = {
 
