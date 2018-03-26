@@ -12,8 +12,8 @@ app.get('/', function (req, res) {
   res.sendfile(path.join(__dirname, 'build', 'index.html'))
 })
 
-const reserveTime = 130
-const timePerTurn = 30
+const reserveTime = 2
+const timePerTurn = 3
 
 const rooms = {
 
@@ -55,7 +55,7 @@ io.on('connection', client => {
     rooms[clientRoom].timer = setInterval(() => {
       const clientsInRoom = io.sockets.adapter.rooms[clientRoom] && Object.keys(io.sockets.adapter.rooms[clientRoom].sockets).filter(key => io.sockets.adapter.rooms[clientRoom].sockets[key])
       const time = rooms[clientRoom].time
-      const step = rooms[clientRoom].step
+
       const reserve = rooms[clientRoom].reserve
       const team = rooms[clientRoom].team
 
@@ -76,14 +76,14 @@ io.on('connection', client => {
       }
 
       if (time < 0 && reserve[team] < 0) {
-        if (step < 22) {
-          pickOrder[step] && io.to(clientsInRoom[0]).emit('random', pickOrder[step].team)
+        if (rooms[clientRoom].step < 22) {
+          pickOrder[rooms[clientRoom].step] && io.to(clientsInRoom[0]).emit('random', pickOrder[rooms[clientRoom].step].team)
 
           rooms[clientRoom].time = timePerTurn
-          rooms[clientRoom].step = step + 1
-          rooms[clientRoom].team = pickOrder[step] && pickOrder[step].team
-        } else if (step === 22) {
-          pickOrder[step] && io.to(clientsInRoom[0]).emit('random', pickOrder[step].team)
+          rooms[clientRoom].step = rooms[clientRoom].step + 1
+          rooms[clientRoom].team = pickOrder[rooms[clientRoom].step] && pickOrder[rooms[clientRoom].step].team
+        } else if (rooms[clientRoom].step === 22) {
+          pickOrder[rooms[clientRoom].step] && io.to(clientsInRoom[0]).emit('random', pickOrder[rooms[clientRoom].step].team)
           io.to(clientRoom).emit('time', null)
           rooms[clientRoom].reserve = {
             firstPick: reserveTime,
@@ -130,7 +130,7 @@ io.on('connection', client => {
         return []
       } else {
         if (clients.length < 1) {
-          clearInterval(rooms[clientRoom].timer)
+          rooms[clientRoom].timer !== null && clearInterval(rooms[clientRoom].timer)
           delete rooms[clientRoom]
         }
       }
