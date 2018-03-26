@@ -6,7 +6,6 @@ import SmartUpdateHome from '../../containers/update/updateContainer'
 
 export default class Root extends Component {
   render () {
-    console.log('client version: 1.0.1')
     return (
       <AppWrapper>
         <BrowserRouter>
