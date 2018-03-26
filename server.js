@@ -46,14 +46,7 @@ io.on('connection', client => {
     step = step + 1
 
     timer = setInterval(() => {
-      const clientsInRoom = io.of('/').in(clientRoom).clients((error, clients) => {
-        if (error) {
-          console.log('error in clientsInRoom', error)
-          return []
-        } else {
-          return clients
-        }
-      })
+      const clientsInRoom = io.sockets.adapter.rooms[clientRoom] && Object.keys(io.sockets.adapter.rooms[clientRoom].sockets).filter(key => io.sockets.adapter.rooms[clientRoom].sockets[key])
       if (time >= 0) {
         io.to(clientRoom).emit('time', {
           countdown: time,
